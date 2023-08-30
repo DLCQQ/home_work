@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Калькулятор индекса массы тела</title>
+    <!--Google Font-->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+
+
+
+    <div class="container">
+      <h1>Калькулятор индекса массы тела</h1>
+      <div class="display">
+                <p id="result">20.0</p>
+                <p id="category">Нормальный вес</p>
+      </div>
+        <div class="row">
+            <input type="range" min="20" max="200" value="20" id="weight" oninput="calculate()">
+            <span id="weight-val">20 kg</span>
+        </div>
+        <div class="row">
+            <input type="range" min="100" max="250" value="100" id="height" oninput="calculate()">
+            <span id="height-val">100 cm</span>
+        </div>
+
+
+    </div>
+
+    <!--Script-->
+
+    <script>
+        let name = prompt ('Введите свое имя')
+        alert ('Привет '+ name)
+    </script>
+
+    <script type="text/javascript">
+function calculate(){
+    var bmi;
+    var result = document.getElementById("result");
+
+    var weight = parseInt(document.getElementById("weight").value);
+    document.getElementById("weight-val").textContent = weight + " кг";
+
+    var height = parseInt(document.getElementById("height").value);
+    document.getElementById("height-val").textContent = height + " см";
+
+    bmi = (weight / Math.pow( (height/100), 2 )).toFixed(1);
+    result.textContent = bmi;
+
+    if(bmi < 18.5){
+        category = "Недостаточный вес 😒";
+        result.style.color = "#ffc44d";
+    }
+    else if( bmi >= 18.5 && bmi <= 24.9 ){
+        category = "Нормальный вес 😍";
+        result.style.color = "#0be881";
+    }
+    else if( bmi >= 25 && bmi <= 29.9 ){
+        category = "Избыточный вес 😮";
+        result.style.color = "#ff884d";
+    }
+    else{
+        category = "Ожирение 😱";
+        result.style.color = "#ff5e57";
+    }
+    document.getElementById("category").textContent = category;
+}
+    </script>
+</body>
+</html>
